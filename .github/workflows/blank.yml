@@ -25,6 +25,7 @@ jobs:
     # Ejecutara una maquina de ubunto y dentro
     runs-on: ubuntu-latest
     # estos pasos
+    steps:
       - name: "Mostrar un mensaje"
         run: echo "Hola mundo"
     
