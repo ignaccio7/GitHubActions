@@ -14,13 +14,19 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   # Permite ejecutar este flujo de trabajo manualmente desde la pestaña Acciones
-  workflow_dispatch:
+  workflow_dispatch:  
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 # Pasos que ejecutara este programa
 jobs:
   # This workflow contains a single job called "build"
   build:
+    # Aqui tambien podriamos definir algunas variables de entorno
+    env:
+      platform: aws
+      region: us-easet-1
+      acount: 123456
+
     # The type of runner that the job will run on
     # Ejecutara una maquina de ubunto y dentro
     runs-on: ubuntu-latest
@@ -28,4 +34,10 @@ jobs:
     steps:
       - name: "Mostrar un mensaje"
         run: echo "Hola mundo"
+      
+      - name: "Mostrando variables de entorno"
+        run: |
+          echo "Plataforma : ${{env.aws}}"
+          echo "Region : ${{env.region}}"
+          echo "Cuenta : ${{env.acount}}"
     
