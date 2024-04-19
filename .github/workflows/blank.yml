@@ -42,5 +42,12 @@ jobs:
           echo "Plataforma : ${{env.platform}}"
           echo "Region : ${{env.region}}"
           echo "Cuenta : ${{env.acount}}"
+      # Tambien tenemos variables por defecto que tiene github ahi nos mostrara un objetoJSON donde se vera los commits la informacion de estos la url del repo, la url del github action etc -> https://docs.github.com/en/actions/learn-github-actions/variables
+      - name: "Mostrando variables por defecto"
+        run: |
+          echo "Evento: ${{ toJSON(github.event) }}"
+          echo "Github Actor: $GITHUB_ACTOR"
+          echo "Github Actor: $GITHUB_REPOSITORY"
+
         
     
