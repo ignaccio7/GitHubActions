@@ -36,8 +36,11 @@ jobs:
         run: echo "Hola mundo"
       
       - name: "Mostrando variables de entorno"
-        run: |
-          echo "Plataforma : ${{env.aws}}"
+      # tambien se puede usar condicionales
+        if: ${{ env.platform == "azure" }}
+        run: |        
+          echo "Plataforma : ${{env.platform}}"
           echo "Region : ${{env.region}}"
           echo "Cuenta : ${{env.acount}}"
+        
     
