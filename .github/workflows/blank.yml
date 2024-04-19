@@ -26,6 +26,9 @@ jobs:
       platform: aws
       region: us-easet-1
       acount: 123456
+      # Algo importante que poedmos tener es variables tanto secretas o publicas eso en el repo -> settings -> secrests and variables -> actions -> Repository secrets | Environment secrets
+      user: ${{ secrets.USER }}
+      password: ${{ secrets.PASSWORD }}
 
     # The type of runner that the job will run on
     # Ejecutara una maquina de ubunto y dentro
@@ -38,16 +41,22 @@ jobs:
       - name: "Mostrando variables de entorno"
       # tambien se puede usar condicionales
         if: ${{ env.platform == 'azure' }}
+        # los secrets lo imprimira con **** ya que github detecta que son valores secretos
         run: |        
           echo "Plataforma : ${{env.platform}}"
           echo "Region : ${{env.region}}"
           echo "Cuenta : ${{env.acount}}"
+
+          echo "User secret : ${{env.user}}"
+          echo "Password secret : ${{env.password}}"
+
       # Tambien tenemos variables por defecto que tiene github ahi nos mostrara un objetoJSON donde se vera los commits la informacion de estos la url del repo, la url del github action etc -> https://docs.github.com/en/actions/learn-github-actions/variables
       - name: "Mostrando variables por defecto"
         run: |
           echo "Evento: ${{ toJSON(github.event) }}"
           echo "Github Actor: $GITHUB_ACTOR"
-          echo "Github Actor: $GITHUB_REPOSITORY"
+          echo "Github Actor: $GITHUB_REPOSITORY"      
+
 
         
     
