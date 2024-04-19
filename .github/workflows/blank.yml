@@ -41,7 +41,7 @@ jobs:
       - name: "Mostrando variables de entorno"
       # tambien se puede usar condicionales
         if: ${{ env.platform == 'aws' }}
-        # los secrets lo imprimira con **** ya que github detecta que son valores secretos
+        # los secrets lo imprimira con **** ya que github detecta que son valores secretos pero eso no quiere decir que nose puedan usar para validaciones
         run: |        
           echo "Plataforma : ${{env.platform}}"
           echo "Region : ${{env.region}}"
@@ -55,7 +55,13 @@ jobs:
         run: |
           echo "Evento: ${{ toJSON(github.event) }}"
           echo "Github Actor: $GITHUB_ACTOR"
-          echo "Github Actor: $GITHUB_REPOSITORY"      
+          echo "Github Actor: $GITHUB_REPOSITORY"    
+
+      # Probando con los valores secret
+      - name: "Mostrando valores si el usuario es correcto"
+        if: ${{ env.user == 'user' && env.password != '321' }}
+        run: |
+          echo "Usuario correcto"
 
 
         
