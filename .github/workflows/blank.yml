@@ -58,8 +58,8 @@ jobs:
           echo "Github Actor: $GITHUB_REPOSITORY"    
 
       # Probando con los valores secret
-      - name: "Mostrando valores si el usuario es correcto"
-        if: ${{ env.user == 'user' && env.password != '321' }}
+      - name: "Mostrando valores si el User es correcto y el pass"
+        if: ${{ env.user == 'user' && env.password != '3210' }}
         run: |
           echo "Usuario correcto"
 
