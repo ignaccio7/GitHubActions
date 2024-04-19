@@ -50,6 +50,8 @@ jobs:
           echo "User secret : ${{env.user}}"
           echo "Password secret : ${{env.password}}"
 
+          echo "Project version : ${{vars.PROJECT_VERSION}}"
+
       # Tambien tenemos variables por defecto que tiene github ahi nos mostrara un objetoJSON donde se vera los commits la informacion de estos la url del repo, la url del github action etc -> https://docs.github.com/en/actions/learn-github-actions/variables
       - name: "Mostrando variables por defecto"
         run: |
@@ -59,7 +61,7 @@ jobs:
 
       # Probando con los valores secret
       - name: "Mostrando valores si el User es correcto y el pass"
-        if: ${{ env.user == 'user' && env.password != '3210' }}
+        if: ${{ env.user == 'admin' && env.password != '3210' }}
         run: |
           echo "Usuario correcto"
 
