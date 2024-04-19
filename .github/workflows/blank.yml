@@ -40,7 +40,7 @@ jobs:
       
       - name: "Mostrando variables de entorno"
       # tambien se puede usar condicionales
-        if: ${{ env.platform == 'azure' }}
+        if: ${{ env.platform == 'aws' }}
         # los secrets lo imprimira con **** ya que github detecta que son valores secretos
         run: |        
           echo "Plataforma : ${{env.platform}}"
