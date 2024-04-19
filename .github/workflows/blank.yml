@@ -37,7 +37,7 @@ jobs:
       
       - name: "Mostrando variables de entorno"
       # tambien se puede usar condicionales
-        if: ${{ env.platform == "azure" }}
+        if: ${{ env.platform == 'azure' }}
         run: |        
           echo "Plataforma : ${{env.platform}}"
           echo "Region : ${{env.region}}"
